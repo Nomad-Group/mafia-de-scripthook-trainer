@@ -1,2 +1,2 @@
-# mafia-de-scripthook-trainer
+# Mafia-Definitive-Edition-ScriptHook-Trainer
 Mafia Definitive Edition ScriptHook Trainer

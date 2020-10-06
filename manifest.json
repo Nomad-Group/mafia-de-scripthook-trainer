@@ -1,0 +1,10 @@
+{
+	"name": "Simple Trainer",
+	"author": "Nomad Group",
+	"version": "1.0",
+	
+	"entrypoint": "main.lua",
+	"keyBinds": {
+		"menu": "F4"
+	}
+}
