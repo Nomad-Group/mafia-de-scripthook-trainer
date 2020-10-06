@@ -23,36 +23,11 @@ local function PlayerSetGod(on)
 	end
 end
 
--- Player Give Weapons
-local function GiveWeapon(menu, text, name)
-	ammo_ammount = 500
-	active_weapon  = game.game:GetActivePlayer():InventoryGetSelected()
-	if active_weapon == "empty" then
-		game.game:GetActivePlayer():InventoryAddWeapon(name, ammo_ammount)
-		game.game:GetActivePlayer():InventorySelect(name, true)
-	else
-		game.game:GetActivePlayer():InventoryRemoveWeapon(active_weapon)
-		game.game:GetActivePlayer():InventoryAddWeapon(name, ammo_ammount)
-		game.game:GetActivePlayer():InventorySelect(name, true)
-	end
-end
-
-local function GiveWeaponsMenu()
-	local menu = UI.SimpleMenu()
-	menu:SetTitle("Give Weapon")
-	menu:AddSearch("Search", "Start typing to filter")
-
-	for k,v in pairsByKeys(WeaponIDs) do
-		menu:AddButton(k, v, GiveWeapon)
-	end
-
-	return menu
-end
 
 -- Player Model
 local function ChangeModel(menu, text, name)
     local player = game.game:GetActivePlayer()
-    
+
     if player == nil then
         return false
     end
@@ -76,10 +51,10 @@ end
 local function ToggleModelVisibilityMenu()
 	local menu = UI.SimpleMenu()
     menu:SetTitle("Change Model Visibility")
-    
+
     menu:AddButton("Set Visible", function()
         local player = game.game:GetActivePlayer()
-    
+
         if player then
             player:ShowModel(true)
         end
@@ -87,7 +62,7 @@ local function ToggleModelVisibilityMenu()
 
     menu:AddButton("Set Hidden", function()
         local player = game.game:GetActivePlayer()
-    
+
         if player then
             player:ShowModel(false)
         end
@@ -100,10 +75,10 @@ end
 local function TogglePhysicsMenu()
 	local menu = UI.SimpleMenu()
     menu:SetTitle("Change Model Physics")
-    
+
     menu:AddButton("Set Dynamic", function()
         local player = game.game:GetActivePlayer()
-    
+
         if player then
             player:SetPhysState(enums.PhysicsState.DYNAMIC)
         end
@@ -111,7 +86,7 @@ local function TogglePhysicsMenu()
 
     menu:AddButton("Set Disabled", function()
         local player = game.game:GetActivePlayer()
-    
+
         if player then
             player:SetPhysState(enums.PhysicsState.DISABLED)
         end
@@ -133,9 +108,7 @@ local function PlayerMenu()
 	local noclipIdx = menu:AddCheckbox("No Clip", "Fly like a bird", function()
 		ScriptHook.SetLocalPlayerNoclip(not ScriptHook.HasLocalPlayerNoclip())
 	end)
-	
-    menu:AddButton("Weapons", ScriptHook.CurrentScript():CacheMenu(GiveWeaponsMenu))
-    
+
 	menu:AddButton("Change Model", ScriptHook.CurrentScript():CacheMenu(ChangeModelMenu))
 	menu:AddButton("Toggle Model Visibility", ScriptHook.CurrentScript():CacheMenu(ToggleModelVisibilityMenu))
 	menu:AddButton("Toggle Physics", ScriptHook.CurrentScript():CacheMenu(TogglePhysicsMenu))
