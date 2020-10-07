@@ -1,6 +1,6 @@
 {
 	"name": "Simple Trainer",
-	"author": "Nomad Group",
+	"author": "Nomad Group, Deewarz",
 	"version": "1.0",
 	
 	"entrypoint": "main.lua",

@@ -18,12 +18,12 @@ menu:SetTitle("SCRIPTHOOK TRAINER")
 -- Items
 SimpleTrainerMenuItems = {}
 include("Player.lua")
+include("Weapons.lua")
 include("Police.lua")
-include("HUD.lua")
-include("Environment.lua")
 include("Vehicle.lua")
 include("Teleport.lua")
-include("Weapons.lua")
+include("HUD.lua")
+include("Environment.lua")
 
 for _,data in ipairs(SimpleTrainerMenuItems) do
 	menu:AddButton(unpack(data))
