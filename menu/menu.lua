@@ -23,6 +23,7 @@ include("HUD.lua")
 include("Environment.lua")
 include("Vehicle.lua")
 include("Teleport.lua")
+include("Weapons.lua")
 
 for _,data in ipairs(SimpleTrainerMenuItems) do
 	menu:AddButton(unpack(data))
