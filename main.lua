@@ -1,6 +1,8 @@
 -- Menu
 include("menu/menu.lua")
-include("menu/webui.lua")
+
+-- WebUI (Nomad + Changelog)
+include("webui.lua")
 
 local script = ScriptHook.CurrentScript()
 script.Entities = {}
