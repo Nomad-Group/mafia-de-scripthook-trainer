@@ -1,5 +1,6 @@
 -- Menu
 include("menu/menu.lua")
+include("menu/webui.lua")
 
 local script = ScriptHook.CurrentScript()
 script.Entities = {}
