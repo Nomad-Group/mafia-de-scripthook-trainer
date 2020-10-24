@@ -42,7 +42,14 @@ local function HUDMenu()
     end))
     menu:AddButton("Toggle Speedometer", "Speedometer", ScriptHook.CurrentScript():CacheMenu(function()
         return ToggleHudElementMenu("Speedometer")
-    end))
+	end))
+	local shScreens = menu:AddCheckbox("ScriptHook Screens", "Welcome & Changelog Screens", function()
+		ScriptHook.CurrentScript():ToggleWebFrames()
+	end)
+
+	menu:OnUpdate(function()
+		menu:SetChecked(shScreens, ScriptHook.CurrentScript():GetConfigOption("disableNomadWebFrames") ~= true)
+	end)
     
 	return menu
 end
