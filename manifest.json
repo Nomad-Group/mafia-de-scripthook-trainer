@@ -1,7 +1,7 @@
 {
 	"name": "Simple Trainer",
-	"author": "Nomad Group, Deewarz",
-	"version": "1.2",
+	"author": "Nomad Group, Deewarz, vinny94, 3_LC",
+	"version": "1.1",
 	
 	"entrypoint": "main.lua",
 	"keyBinds": {
