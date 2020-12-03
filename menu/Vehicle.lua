@@ -45,9 +45,42 @@ local function IsPlayerVehicleExplosiveDisabled()
 	return veh:IsDisableExplosion()
 end
 
+--Gets Player Position 
+local function GetPlayerPos()
+	local obj = game.game:GetActivePlayer()
+        
+	if obj == nil then
+		return false
+	end
+
+	if (obj:GetOwner() ~= nil) then
+		obj = obj:GetOwner()
+	end
+
+	local pos = obj:GetPos()
+	return pos
+end
+
+--Spawn Boat Function
+local function SpawnBoat(boatModel)
+	--Spawns boat close to the player
+	StartThread(function ()
+		local so, id = game.traffic:ObtainSpecificBoat(boatModel)
+		Wait(so)
+		local playerPos= GetPlayerPos()
+		local positionX = playerPos.x + 10
+		game.traffic:SpawnBoat(id, Math:newVector(positionX , playerPos.y, playerPos.z), Math:newVector(-0.372481, 0.928002, -0.008343))
+	end)
+end
+
 -- Spawn Vehicle
 local function SpawnVehicle(menu, text, name)
-    package.loaded.common.base.game_structure_console.carpls(name)
+	if text== "small_motorboat" or text =="offshore_boat" or text == "bc_boat_fishing" then
+	-- If user attempts to spawn a boat invoke exclusive method for spawning boats
+		SpawnBoat(name)
+	else
+		package.loaded.common.base.game_structure_console.carpls(name)
+	end
 end
 
 local function SpawnVehicleMenu()
