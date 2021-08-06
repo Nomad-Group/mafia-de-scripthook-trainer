@@ -22,17 +22,6 @@ function script:CreateWebFrames()
 	webFrame2:SetRenderDistance3D(25)
 
 	self.Frame_Changelog = webFrame2
-
-	-- Changelog Screen
-	local webFrame3 = UI.WebFrame()
-	webFrame3:SetURL("https://www.youtube.com/watch?v=o-YBDTqX_ZU")
-	webFrame3:SetPosition3D(Math:newVector(-8000, -8000, 4000.0))
-	webFrame3:SetSize3D(Math:newVector(16000, 16000, 1))
-	webFrame3:SetRotation3D(Math:newVector(0, 0, 0))
-	webFrame3:SetSize2D(1600, 1795)
-	webFrame3:SetRenderDistance3D(25000)
-
-	self.Frame_Troll = webFrame3
 end
 
 -- Frame Destruction
@@ -46,16 +35,11 @@ function script:DestroyWebFrames()
 		self.Frame_Changelog:Destroy()
 		self.Frame_Changelog = nil
 	end
-
-	if self.Frame_Troll then
-		self.Frame_Troll:Destroy()
-		self.Frame_Troll = nil
-	end
 end
 
 -- Toggle method
 function script:ToggleWebFrames()
-	if self.Frame_Welcome or self.Frame_Changelog or self.Frame_Troll then
+	if self.Frame_Welcome or self.Frame_Changelog then
 		self:DestroyWebFrames()
 		self:SetConfigOption("disableNomadWebFrames", true)
 	else
