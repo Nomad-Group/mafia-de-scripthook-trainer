@@ -105,9 +105,33 @@ local function PlayerMenu()
 		PlayerSetGod(not PlayerHasGod())
 	end)
 
-	local noclipIdx = menu:AddCheckbox("No Clip", "Fly like a bird", function()
+	local noclipIdx = menu:AddCheckbox("Noclip", "Fly like a bird", function()
 		ScriptHook.SetLocalPlayerNoclip(not ScriptHook.HasLocalPlayerNoclip())
 	end)
+
+	-- Noclip Speed
+	local speedIdx = menu:AddList("Noclip Speed", function(_,_,_,_, idx, speed)
+		ScriptHook.CurrentScript():ApplyCameraSpeed("normal", speed)
+	end)
+
+	for _,v in pairs({ 0.5, 1, 2, 3, 5, 10, 15, 20, 25, 50, 75, 100 }) do
+		menu:AddListEntry(speedIdx, tostring(v))
+	end
+
+	-- Noclip Shift Speed
+	local shiftSpeedIdx = menu:AddList("Noclip Shift Speed", function(_,_,_,_, idx, speed)
+		ScriptHook.CurrentScript():ApplyCameraSpeed("shift", speed)
+	end)
+
+	for _,v in pairs({ 5, 10, 25, 50, 75, 100, 150, 200, 250, 350, 450 }) do
+		menu:AddListEntry(shiftSpeedIdx, tostring(v))
+	end
+
+	-- Persistent
+	local speedData = ScriptHook.CurrentScript():ReadCameraSpeeds()
+	menu:SelectListEntryByValue(speedIdx, tostring(speedData.normal))
+	menu:SelectListEntryByValue(shiftSpeedIdx, tostring(speedData.shift))
+	speedData.ready = true
 
 	menu:AddButton("Change Model", ScriptHook.CurrentScript():CacheMenu(ChangeModelMenu))
 	menu:AddButton("Toggle Model Visibility", ScriptHook.CurrentScript():CacheMenu(ToggleModelVisibilityMenu))

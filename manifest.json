@@ -1,17 +1,23 @@
 {
-	"name": "Simple Trainer",
-	"author": "Nomad Group, Deewarz, vinny94, 3_LC",
-	"version": "1.1",
-	
-	"entrypoint": "main.lua",
-	"keyBinds": {
-		"menu": "F4"
-	},
-	"keyBindsInfo": [
-		{
-			"info": "Toggle trainer menu. Navigation within the Trainer works with Arrows & Numpad keys.",
+    "author": "Nomad Group, Deewarz, vinny94, 3_LC",
+    "enableAutoRefresh": true,
+    "entrypoint": "main.lua",
+    "keyBinds": {
+        "menu": "F4",
+        "noclip": ""
+    },
+    "keyBindsInfo": [
+        {
+            "info": "Toggle trainer menu. Navigation within the Trainer works with Arrows & Numpad keys.",
             "name": "menu",
             "text": "Trainer Menu"
-		}
-	]
+        },
+        {
+            "info": "Toggle noclip from anywhere.",
+            "name": "noclip",
+            "text": "Toggle Noclip"
+        }
+    ],
+    "name": "Simple Trainer",
+    "version": "1.1"
 }
