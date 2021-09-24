@@ -6,5 +6,12 @@
 	"entrypoint": "main.lua",
 	"keyBinds": {
 		"menu": "F4"
-	}
+	},
+	"keyBindsInfo": [
+		{
+			"info": "Toggle trainer menu. Navigation within the Trainer works with Arrows & Numpad keys.",
+            "name": "menu",
+            "text": "Trainer Menu"
+		}
+	]
 }
